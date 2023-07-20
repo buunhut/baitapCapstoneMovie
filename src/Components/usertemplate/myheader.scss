@@ -1,0 +1,103 @@
+#myHeader {
+  .content {
+    // width: 1140px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0 30px;
+    line-height: 60px;
+    background-color: blueviolet;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    #myLogo {
+      h1 {
+        font-size: 28px;
+        font-weight: bold;
+        color: orangered;
+      }
+    }
+    #myMenu {
+      display: flex;
+      justify-content: space-between;
+      height: 60px;
+      .myMenuItem {
+        margin: 0 20px;
+      }
+      .dangNhap {
+        margin-left: 40px;
+        display: flex;
+        justify-content: space-between;
+        #userInfo {
+          margin-right: 30px;
+        }
+      }
+      #myButtonDangXuat {
+        background-color: orangered;
+        color: white;
+        border: 1px solid transparent;
+        transition: all 0.3s;
+        &:hover {
+          border: 1px solid white;
+          background-color: blueviolet;
+        }
+      }
+    }
+    .myBar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #myHeader {
+    .content {
+      width: 100%;
+      #myMenu {
+        position: absolute;
+        z-index: 999;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.1s;
+        box-shadow: rgba(240, 240, 240, 0.2);
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        background-color: rgb(254, 254, 254);
+        .myMenuItem {
+          margin: 0;
+          height: 40px;
+          line-height: 5px;
+          padding: 20px;
+          border-bottom: 1px solid silver;
+          color: blueviolet;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .dangNhap {
+          margin: 0;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          background-color: white;
+          border-bottom: 1px solid orangered;
+          color: blueviolet;
+          font-size: 20px;
+          font-weight: bold;
+        }
+        #userInfo {
+          color: orangered;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+      .myBar {
+        display: block;
+      }
+    }
+  }
+}
+.ant-btn-primary {
+  background-color: orangered !important;
+}
