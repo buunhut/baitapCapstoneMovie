@@ -5,17 +5,20 @@ import LichChieu from "./LichChieu";
 import CumRap from "./CumRap";
 import TinTuc from "./TinTuc";
 import UngDung from "./UngDung";
+import DanhSachPhim from "./DanhSachPhim";
 
 const HomePage = () => {
   return (
-    <>
+    <div id="myMain">
       <MyHeader />
       <Outlet />
       <LichChieu />
+      <DanhSachPhim />
+
       <CumRap />
       <TinTuc />
       <UngDung />
-    </>
+    </div>
   );
 };
 

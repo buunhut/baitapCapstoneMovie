@@ -1,9 +1,13 @@
 #dangNhap {
   width: 360px;
-  margin: 20px auto;
   padding: 20px;
-  //   background-color: rgb(227, 199, 199);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  z-index: 9997;
+  background-color: white;
+  transform: translateX(-50%);
 
   .inputItem {
     border-bottom: 1px solid silver;
@@ -31,5 +35,11 @@
   .myAlert {
     color: red;
     font-size: 12px;
+  }
+  .closer {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: orangered;
   }
 }

@@ -1,7 +1,8 @@
 import React from "react";
+import "./lichchieu.scss";
 
 const LichChieu = () => {
-  return <div>LichChieu</div>;
+  return <div id="lichChieu">LichChieu</div>;
 };
 
 export default LichChieu;

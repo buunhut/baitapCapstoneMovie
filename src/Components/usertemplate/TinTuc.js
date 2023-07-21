@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
+import "./tintuc.scss";
 
 const TinTuc = () => {
-  return <div>TinTuc</div>;
+  return <div id="tinTuc">TinTuc</div>;
 };
 
 export default TinTuc;

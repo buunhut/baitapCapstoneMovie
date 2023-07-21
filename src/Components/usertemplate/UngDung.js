@@ -1,7 +1,8 @@
 import React from "react";
+import "./ungdung.scss";
 
 const UngDung = () => {
-  return <div>UngDung</div>;
+  return <div id="ungDung">UngDung</div>;
 };
 
 export default UngDung;

@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}>
           <Route path="/dangnhap" element={<DangNhap />} />
-          <Route path="/cumrap" element={<CumRap />} />
         </Route>
         <Route path="/quanly" element={<QuanLy />} />
       </Routes>

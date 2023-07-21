@@ -1,4 +1,7 @@
 #myHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 9998;
   .content {
     // width: 1140px;
     height: 60px;
@@ -9,11 +12,12 @@
     color: white;
     display: flex;
     justify-content: space-between;
+    // align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     #myLogo {
       h1 {
         font-size: 28px;
-        font-weight: bold;
+        font-weight: 500;
         color: orangered;
       }
     }
@@ -21,15 +25,22 @@
       display: flex;
       justify-content: space-between;
       height: 60px;
-      .myMenuItem {
-        margin: 0 20px;
-      }
-      .dangNhap {
-        margin-left: 40px;
+      #myMenuContent {
         display: flex;
         justify-content: space-between;
-        #userInfo {
-          margin-right: 30px;
+        .myMenuItem {
+          margin: 0 20px;
+          .myLink {
+            cursor: pointer;
+          }
+        }
+        .dangNhap {
+          margin-left: 40px;
+          display: flex;
+          justify-content: space-between;
+          #userInfo {
+            margin-right: 30px;
+          }
         }
       }
       #myButtonDangXuat {
@@ -65,31 +76,36 @@
         flex-direction: column-reverse;
         justify-content: flex-end;
         background-color: rgb(254, 254, 254);
-        .myMenuItem {
-          margin: 0;
-          height: 40px;
-          line-height: 5px;
-          padding: 20px;
-          border-bottom: 1px solid silver;
-          color: blueviolet;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .dangNhap {
-          margin: 0;
-          padding: 0 20px;
-          display: flex;
-          justify-content: space-between;
-          background-color: white;
-          border-bottom: 1px solid orangered;
-          color: blueviolet;
-          font-size: 20px;
-          font-weight: bold;
-        }
-        #userInfo {
-          color: orangered;
-          font-size: 20px;
-          font-weight: bold;
+        #myMenuContent {
+          // flex-direction: column;
+          flex-direction: column;
+
+          .myMenuItem {
+            margin: 0;
+            height: 40px;
+            line-height: 5px;
+            padding: 20px;
+            border-bottom: 1px solid silver;
+            color: blueviolet;
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .dangNhap {
+            margin: 0;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            border-bottom: 1px solid orangered;
+            color: blueviolet;
+            font-size: 20px;
+            font-weight: 500;
+          }
+          #userInfo {
+            color: orangered;
+            font-size: 20px;
+            font-weight: 500;
+          }
         }
       }
       .myBar {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 import { Tabs } from "antd";
+import "./movieitem.scss";
 
 const MovieItem = ({ maHeThongRap }) => {
   const [lichChieu, setLichChieu] = useState([]);
@@ -9,7 +10,7 @@ const MovieItem = ({ maHeThongRap }) => {
       setLichChieu(result.data.content);
     });
   }, [maHeThongRap]);
-  console.log(lichChieu);
+  // console.log(lichChieu);
 
   const renderMovieItem = () => {
     return lichChieu[0]?.lstCumRap.map((item, index) => {
@@ -22,7 +23,7 @@ const MovieItem = ({ maHeThongRap }) => {
         ),
         key: index,
         children: (
-          <div>
+          <div id="movieItem">
             {item.danhSachPhim.map((item, index) => {
               if (item.dangChieu) {
                 return (

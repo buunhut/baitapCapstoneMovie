@@ -45,7 +45,7 @@ const DangNhap = () => {
   const { handleBlur, handleChange, handleSubmit } = formik;
   //
   const onChange = (key) => {
-    console.log(key);
+    // console.log(key);
   };
   const items = [
     {
@@ -151,6 +151,15 @@ const DangNhap = () => {
 
   return (
     <div id="dangNhap">
+      <button
+        type="button"
+        className="closer"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <i className="fa-solid fa-xmark"></i>
+      </button>
       {contextHolder}
 
       <Tabs defaultActiveKey="1" items={items} onChange={onChange} />

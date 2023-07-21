@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 import { Tabs } from "antd";
 import MovieItem from "./MovieItem";
+import "./cumrap.scss";
 
 const CumRap = () => {
   const [heThongRap, setHeThongRap] = useState([]);
@@ -26,7 +27,7 @@ const CumRap = () => {
     });
   };
   return (
-    <div>
+    <div id="cumRap">
       <Tabs tabPosition="left" items={renderItemTab()} />
     </div>
   );

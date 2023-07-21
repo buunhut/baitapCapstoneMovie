@@ -1,0 +1,30 @@
+#danhSachPhim {
+  .danhSachPhimContent {
+    width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    .phimItem {
+      width: 260px;
+      height: 380px;
+      margin-bottom: 50px;
+      img {
+        width: 260px;
+        height: 300px;
+      }
+      .phimTitle {
+        display: flex;
+        height: 60px;
+        p {
+          margin-left: 30px;
+        }
+      }
+      .moTa {
+        color: silver;
+        height: 60px;
+      }
+    }
+  }
+}
