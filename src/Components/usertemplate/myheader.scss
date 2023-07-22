@@ -4,11 +4,11 @@
   z-index: 9998;
   .content {
     // width: 1140px;
-    height: 60px;
+    height: 50px;
     margin: 0 auto;
     padding: 0 30px;
-    line-height: 60px;
-    background-color: blueviolet;
+    line-height: 50px;
+    background-color: rgba(137, 43, 226, 0.6);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -24,7 +24,7 @@
     #myMenu {
       display: flex;
       justify-content: space-between;
-      height: 60px;
+      height: 50px;
       #myMenuContent {
         display: flex;
         justify-content: space-between;
@@ -66,8 +66,8 @@
       width: 100%;
       #myMenu {
         position: absolute;
-        z-index: 999;
-        top: 60px;
+        z-index: 3;
+        top: 50px;
         left: 0;
         width: 100%;
         overflow: hidden;

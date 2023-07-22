@@ -12,7 +12,6 @@ const HomePage = () => {
     <div id="myMain">
       <MyHeader />
       <Outlet />
-      <LichChieu />
       <DanhSachPhim />
 
       <CumRap />

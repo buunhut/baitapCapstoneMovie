@@ -12,6 +12,13 @@
   .inputItem {
     border-bottom: 1px solid silver;
     padding: 5px;
+    position: relative;
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 30px;
+    }
   }
 
   input {

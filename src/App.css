@@ -8,3 +8,9 @@
   height: 100vh;
 }
 
+.ReactModal__Content {
+  border: none !important;
+  /* width: 900px; */
+  margin: 0 auto;
+  padding: 0;
+}

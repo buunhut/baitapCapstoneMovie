@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./dangnhap.scss";
 import { Tabs } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -43,9 +43,62 @@ const DangNhap = () => {
     },
   });
   const { handleBlur, handleChange, handleSubmit } = formik;
-  //
+  //xử lý form đăng ký
+  const formikRegister = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+      hoTen: "",
+      email: "",
+      soDt: "",
+      maNhom: "GP01",
+    },
+    validationSchema: yup.object({
+      taiKhoan: yup.string().required("Vui lòng nhập tài khoản"),
+      matKhau: yup
+        .string()
+        .required("Vui lòng nhập mật khẩu")
+        .matches(
+          /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/,
+          "Mật khẩu ít nhất 6 ký tự, phải có ký tự hoa và đặc biệt"
+        ),
+      hoTen: yup.string().required("Vui lòng nhập họ tên"),
+      email: yup
+        .string()
+        .email("Email không hợp lệ")
+        .required("Vui lòng nhập email"),
+      soDt: yup
+        .string()
+        .required("Vui lòng nhập số điện thoại")
+        .matches(/^\d+$/, "Số điện thoại chỉ được chứa số")
+        .max(11, "Số điện thoại tối đa 11 ký tự"),
+    }),
+    onSubmit: (values) => {
+      giaoTiepAPI
+        .dangKy(values)
+        .then((result) => {
+          messageApi.success("Đăng ký thành công");
+        })
+        .catch((error) => {
+          messageApi.error("Đăng ký thất bại");
+        });
+    },
+  });
+  const {
+    handleBlur: handleBlurRegister,
+    handleChange: handleChangeRegister,
+    handleSubmit: handleSubmitRegister,
+  } = formikRegister;
+
+  const [hienMatKhau, setHienMatKhau] = useState(false);
+
+  // Function to handle password visibility toggle
+  const anHienMatKhau = () => {
+    setHienMatKhau((anMatKhau) => !anMatKhau);
+  };
+
   const onChange = (key) => {
-    // console.log(key);
+    setHienMatKhau(false);
   };
   const items = [
     {
@@ -73,11 +126,23 @@ const DangNhap = () => {
             <input
               id="matKhau"
               name="matKhau"
-              type="password"
+              type={hienMatKhau ? "text" : "password"}
               placeholder="Mật khẩu"
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={anHienMatKhau}
+            >
+              {/* thay đổi icon */}
+              {hienMatKhau ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </button>
           </div>
 
           {formik.errors.matKhau && formik.touched.matKhau ? (
@@ -97,36 +162,82 @@ const DangNhap = () => {
       key: "2",
       label: `Đăng ký`,
       children: (
-        <form>
+        <form onSubmit={handleSubmitRegister}>
           <div className="inputItem">
             <input
               id="taiKhoan"
               name="taiKhoan"
               type="text"
               placeholder="Tài khoản"
+              onChange={handleChangeRegister}
+              onBlur={handleBlurRegister}
             />
           </div>
-          <p className="myAlert">Thông báo</p>
+          {formikRegister.errors.taiKhoan && formikRegister.touched.taiKhoan ? (
+            <p className="myAlert">{formikRegister.errors.taiKhoan}</p>
+          ) : (
+            <p></p>
+          )}
 
           <div className="inputItem">
             <input
               id="matKhau"
               name="matKhau"
-              type="password"
+              type={hienMatKhau ? "text" : "password"}
               placeholder="Mật khẩu"
+              onChange={handleChangeRegister}
+              onBlur={handleBlurRegister}
+            />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={anHienMatKhau}
+            >
+              {/* thay đổi icon */}
+              {hienMatKhau ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </button>
+          </div>
+          {formikRegister.errors.matKhau && formikRegister.touched.matKhau ? (
+            <p className="myAlert">{formikRegister.errors.matKhau}</p>
+          ) : (
+            <p></p>
+          )}
+
+          <div className="inputItem">
+            <input
+              id="hoTen"
+              name="hoTen"
+              type="text"
+              placeholder="Họ tên"
+              onChange={handleChangeRegister}
+              onBlur={handleBlurRegister}
             />
           </div>
-          <p className="myAlert">Thông báo</p>
+          {formikRegister.errors.hoTen && formikRegister.touched.hoTen ? (
+            <p className="myAlert">{formikRegister.errors.hoTen}</p>
+          ) : (
+            <p></p>
+          )}
 
           <div className="inputItem">
-            <input id="hoTen" name="hoTen" type="text" placeholder="Họ tên" />
+            <input
+              id="email"
+              name="email"
+              type="text"
+              placeholder="Email"
+              onChange={handleChangeRegister}
+              onBlur={handleBlurRegister}
+            />
           </div>
-          <p className="myAlert">Thông báo</p>
-
-          <div className="inputItem">
-            <input id="email" name="email" type="text" placeholder="Email" />
-          </div>
-          <p className="myAlert">Thông báo</p>
+          {formikRegister.errors.email && formikRegister.touched.email ? (
+            <p className="myAlert">{formikRegister.errors.email}</p>
+          ) : (
+            <p></p>
+          )}
 
           <div className="inputItem">
             <input
@@ -134,9 +245,15 @@ const DangNhap = () => {
               name="soDt"
               type="text"
               placeholder="Số điện thoại"
+              onChange={handleChangeRegister}
+              onBlur={handleBlurRegister}
             />
           </div>
-          <p className="myAlert">Thông báo</p>
+          {formikRegister.errors.soDt && formikRegister.touched.soDt ? (
+            <p className="myAlert">{formikRegister.errors.soDt}</p>
+          ) : (
+            <p></p>
+          )}
 
           <div>
             <button className="myButton" type="submit">

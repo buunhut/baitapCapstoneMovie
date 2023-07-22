@@ -16,7 +16,12 @@ const MovieItem = ({ maHeThongRap }) => {
     return lichChieu[0]?.lstCumRap.map((item, index) => {
       return {
         label: (
-          <div>
+          <div
+            style={{
+              textAlign: "left",
+              width: "400px",
+            }}
+          >
             <p>{item.tenCumRap}</p>
             <p>{item.diaChi}</p>
           </div>
@@ -27,13 +32,13 @@ const MovieItem = ({ maHeThongRap }) => {
             {item.danhSachPhim.map((item, index) => {
               if (item.dangChieu) {
                 return (
-                  <div key={index}>
-                    <div>
+                  <div key={index} className="movieItemContent">
+                    <div className="imgContent">
                       <img src={item.hinhAnh} alt="" />
                     </div>
-                    <div>
+                    <div className="chiTietLichChieu">
                       <h3>{item.tenPhim}</h3>
-                      <div>
+                      <div className="suatChieu">
                         {item.lstLichChieuTheoPhim.map((suatChieu, index) => {
                           return (
                             <p key={index}>{suatChieu.ngayChieuGioChieu}</p>

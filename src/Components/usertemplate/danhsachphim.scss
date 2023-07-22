@@ -1,30 +1,115 @@
 #danhSachPhim {
+  padding-top: 80px;
   .danhSachPhimContent {
-    width: 1140px;
+    max-width: 1140px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
-    gap: 30px;
+    justify-content: space-around;
+    gap: 20px;
     flex-wrap: wrap;
+    padding: 20px;
     .phimItem {
       width: 260px;
-      height: 380px;
+      height: 360px;
       margin-bottom: 50px;
-      img {
-        width: 260px;
-        height: 300px;
-      }
-      .phimTitle {
-        display: flex;
-        height: 60px;
-        p {
-          margin-left: 30px;
+      cursor: pointer;
+      .imgContent {
+        position: relative;
+        img {
+          width: 260px;
+          height: 280px;
+          border-radius: 8px;
+        }
+
+        h1 {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          background-color: rgba(137, 43, 226, 0.6);
+          color: white;
+          border-radius: 8px;
+          padding: 0 8px;
+        }
+        .imgOverlay {
+          border-radius: 8px;
+          background-color: rgba(0, 0, 0, 0.2);
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: none;
+          transition: all 0.3s;
+          text-align: center;
+          i {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 80px;
+            line-height: 280px;
+            font-weight: 100;
+          }
         }
       }
-      .moTa {
-        color: silver;
-        height: 60px;
+      .phimTitle {
+        h1 {
+          margin: 10px 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: orangered;
+          line-height: 18px;
+        }
+        .moTa {
+          color: silver;
+          position: relative;
+          height: 50px;
+          .datVe {
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            line-height: 50px;
+            border-radius: 8px;
+            visibility: hidden;
+            transition: all 0.2s;
+          }
+        }
+      }
+      &:hover {
+        .imgContent {
+          .imgOverlay {
+            display: block;
+          }
+        }
+        .phimTitle {
+          h1 {
+            color: blueviolet;
+          }
+          .moTa {
+            .datVe {
+              visibility: visible;
+            }
+          }
+        }
       }
     }
+  }
+}
+//đè css thư viện
+.custom-overlay {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Màu nền mờ với độ mờ alpha là 0.7 */
+  z-index: 999;
+  #closeTrailer {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: orangered;
   }
 }
