@@ -1,52 +1,61 @@
 #dangNhap {
-  width: 360px;
+  width: 100%;
+  height: 100%;
   padding: 20px;
+  background-color: whitesmoke;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  z-index: 9997;
-  background-color: white;
-  transform: translateX(-50%);
 
-  .inputItem {
-    border-bottom: 1px solid silver;
-    padding: 5px;
-    position: relative;
-    button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 30px;
-    }
-  }
-
-  input {
-    width: 100%;
-    padding: 0 5px;
-    outline: none;
-    background-color: transparent;
-    // margin-bottom: 10px;
-  }
-  .myButton {
-    width: 100%;
-    height: 30px;
-    background-color: blueviolet;
-    color: white;
-    margin-top: 10px;
-    transition: all 0.5s;
-    &:hover {
-      background-color: orangered;
-    }
-  }
-  .myAlert {
-    color: red;
-    font-size: 12px;
-  }
-  .closer {
+  #dangNhapContent {
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid blueviolet;
+    padding: 20px;
     position: absolute;
-    top: 5px;
-    right: 10px;
-    color: orangered;
+    top: 100px;
+    left: 50%;
+    z-index: 9997;
+    background-color: white;
+    transform: translateX(-50%);
+
+    .inputItem {
+      border-bottom: 1px solid silver;
+      padding: 5px;
+      position: relative;
+      button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 30px;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 0 5px;
+      outline: none;
+      background-color: transparent;
+      // margin-bottom: 10px;
+    }
+    .myButton {
+      width: 100%;
+      height: 30px;
+      background-color: blueviolet;
+      color: white;
+      margin-top: 10px;
+      transition: all 0.5s;
+      &:hover {
+        background-color: orangered;
+      }
+    }
+    .myAlert {
+      color: red;
+      font-size: 12px;
+    }
+    .closer {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      color: orangered;
+    }
   }
 }

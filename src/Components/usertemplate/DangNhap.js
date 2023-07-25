@@ -15,7 +15,6 @@ const DangNhap = () => {
   const dispatch = useDispatch();
   const duLieu = useSelector((state) => state.duLieu);
   //   console.log(duLieu);
-
   //xử lý form bằng formik đăng nhập
   const formik = useFormik({
     initialValues: {
@@ -267,20 +266,25 @@ const DangNhap = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="dangNhap">
-      <button
-        type="button"
-        className="closer"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        <i className="fa-solid fa-xmark"></i>
-      </button>
-      {contextHolder}
+    <>
+      <div id="dangNhap">
+        <div id="dangNhapContent">
+          <button
+            type="button"
+            className="closer"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+          {contextHolder}
 
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-    </div>
+          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        </div>
+      </div>
+
+    </>
   );
 };
 

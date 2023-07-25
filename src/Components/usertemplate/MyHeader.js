@@ -45,6 +45,7 @@ const MyHeader = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log("local", user);
   return (
+    <>
     <div id="myHeader">
       <div className="content">
         <div id="myLogo">
@@ -158,6 +159,8 @@ const MyHeader = () => {
         </div>
       </div>
     </div>
+    <div className="myOverlay"></div>
+    </>
   );
 };
 

@@ -1,8 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { giaoTiepAPI } from "./giaoTiepAPI";
 const initialState = {
   isLogin: false,
   user: {},
+  danhSachNguoiDung: [],
 };
+
+export const getAllUser = createAsyncThunk("nguoiDung/reduxSlice", async () => {
+  const result = await giaoTiepAPI.layThongTinNguoiDung();
+
+
+  return result.data.content;
+
+})
+
 
 const reduxSlice = createSlice({
   name: "nguoiDung",
@@ -18,6 +29,12 @@ const reduxSlice = createSlice({
       state.user = {};
     },
   },
+  extraReducers: (builder) => {
+
+    builder.addCase(getAllUser.fulfilled, (state, action) => {
+      state.danhSachNguoiDung = action.payload
+    })
+  }
 });
 export const { dangNhap, dangXuat } = reduxSlice.actions;
 export default reduxSlice.reducer;
