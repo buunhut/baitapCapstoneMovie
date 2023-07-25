@@ -6,14 +6,14 @@ const initialState = {
   danhSachNguoiDung: [],
 };
 
-export const getAllUser = createAsyncThunk("nguoiDung/reduxSlice", async () => {
+export const getAllUser = createAsyncThunk("nguoiDung/getAllUser", async () => {
   const result = await giaoTiepAPI.layThongTinNguoiDung();
-
-
   return result.data.content;
-
-})
-
+});
+// export const addUser = createAsyncThunk("nguoiDung/addUser", async () => {
+//   const result = await giaoTiepAPI.themNguoiDung();
+//   return result.data.content;
+// });
 
 const reduxSlice = createSlice({
   name: "nguoiDung",
@@ -30,11 +30,13 @@ const reduxSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-
     builder.addCase(getAllUser.fulfilled, (state, action) => {
-      state.danhSachNguoiDung = action.payload
-    })
-  }
+      state.danhSachNguoiDung = action.payload;
+    });
+    // builder.addCase(addUser.fulfilled, (state, action) => {
+    //   state.danhSachNguoiDung = action.payload;
+    // });
+  },
 });
 export const { dangNhap, dangXuat } = reduxSlice.actions;
 export default reduxSlice.reducer;

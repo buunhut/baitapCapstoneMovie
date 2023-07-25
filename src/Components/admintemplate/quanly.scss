@@ -7,7 +7,7 @@
     width: 200px;
     padding: 20px 10px;
     height: 100vh;
-    background: orangered;
+    background: blueviolet;
     color: white;
     .info {
       display: flex;
@@ -15,6 +15,9 @@
       justify-content: space-between;
       border-bottom: 1px solid white;
       padding: 10px 5px;
+      i{
+        cursor: pointer;
+      }
     }
     ul {
       margin-top: 20px;
@@ -41,7 +44,7 @@
       width: 100%;
       padding: 20px 10px;
       height: 80px;
-      background: orangered;
+      background: blueviolet;
       color: white;
       display: flex;
       align-items: center;
@@ -55,6 +58,7 @@
         width: auto;
         i {
           margin-left: 20px;
+
         }
       }
       ul {

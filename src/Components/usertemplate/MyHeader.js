@@ -6,8 +6,8 @@ import { Link } from "react-scroll";
 import { myLocalStore } from "../../redux/myLocalStore";
 import { dangXuat } from "../../redux/reduxSlice";
 import { Button, message, Popconfirm } from "antd";
-const text = "Đăng xuất";
-const description = "Bạn chắc muốn đăng xuất khỏi hệ thống?";
+// const text = "Đăng xuất";
+// const description = "Bạn chắc muốn đăng xuất khỏi hệ thống?";
 
 const MyHeader = () => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const MyHeader = () => {
   const showMyMenu = () => {
     setDisplay(!display);
   };
-  const duLieu = useSelector((state) => state.duLieu);
+  // const duLieu = useSelector((state) => state.duLieu);
   // console.log("redux", duLieu);
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log("local", user);
@@ -120,8 +120,8 @@ const MyHeader = () => {
                 <div>
                   <Popconfirm
                     placement="top"
-                    title={text}
-                    description={description}
+                    title="Đăng xuất"
+                    description="Bạn chắc muốn đăng xuất khỏi hệ thống?"
                     onConfirm={confirm}
                     okText="Đăng xuất"
                     cancelText="Không"

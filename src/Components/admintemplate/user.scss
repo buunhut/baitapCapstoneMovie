@@ -1,14 +1,149 @@
-#user{
-    margin: 20px;
-    #addUser{
-        background-color: orangered;
+#user {
+  margin: 20px;
+  #addUser {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3w;
+    &:hover {
+      background-color: orangered;
+    }
+  }
+  .timKiem {
+    border-bottom: 1px solid silver;
+    margin-top: 20px;
+
+    input {
+      height: 38px;
+      width: 100%;
+      margin-left: 20px;
+      outline: none;
+    }
+  }
+
+  .myTable {
+    margin-top: 30px;
+    min-width: 400px;
+    overflow: auto;
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      thead {
+        tr {
+          th {
+            padding: 10px 20px;
+            background-color: blueviolet;
+            color: white;
+            font-size: 16px;
+            font-size: 400;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-size: 400;
+            border-bottom: 1px solid blueviolet;
+            button:first-child {
+              padding: 5px 10px;
+              background-color: orange;
+              color: white;
+              margin: 0 5px;
+              border-radius: 8px;
+              transition: all 0.3s;
+              &:hover {
+                background-color: blueviolet;
+              }
+            }
+            button:last-child {
+              padding: 5px 10px;
+              background-color: orangered;
+              color: white;
+              margin: 0 5px;
+              border-radius: 8px;
+              transition: all 0.3s;
+              &:hover {
+                background-color: blueviolet;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #myForm {
+    position: absolute;
+    top: 0;
+    // left: 0;
+    right: 0;
+    height: 100vh;
+    // padding: 20px;
+    // width: 0px;
+    background-color: rgba(245, 245, 245, 0.6);
+    overflow: hidden;
+    transition: all 0.1s;
+    form {
+      margin-top: 50px;
+      background-color: white;
+      border: 1px solid silver;
+      border-radius: 8px;
+      padding: 20px;
+      width: 380px;
+      margin: 50px auto;
+      .formItem {
+        border-bottom: 1px solid silver;
+        position: relative;
+
+        input {
+          width: 100%;
+          height: 38px;
+          outline: none;
+        }
+        button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 38px;
+        }
+        select {
+          width: 100%;
+          height: 38px;
+          outline: none;
+        }
+      }
+      p {
+        color: red;
+        font-size: 12px;
+      }
+      button.them {
+        height: 40px;
+        width: 100%;
+        background-color: blueviolet;
         color: white;
-        padding: 10px 20px;
+        margin-top: 20px;
+        transition: all 0.3s;
         border-radius: 8px;
+        cursor: pointer;
+        &:hover {
+          background-color: orangered;
+        }
+      }
     }
-    .myTable{
-        margin-top: 30px;
-        min-width: 400px;
-        overflow: scroll;
+    h1 {
+      font-size: 24px;
+
+      text-align: center;
     }
+    button.myClose {
+      padding: 5px 10px;
+      background-color: orangered;
+      color: white;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  }
 }
