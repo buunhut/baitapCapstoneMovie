@@ -1,5 +1,5 @@
 import "./myheader.scss";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
@@ -40,126 +40,135 @@ const MyHeader = () => {
   const showMyMenu = () => {
     setDisplay(!display);
   };
-  // const duLieu = useSelector((state) => state.duLieu);
-  // console.log("redux", duLieu);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user, isLogin } = useSelector((state) => state.duLieu);
+  // const user = JSON.parse(localStorage.getItem("user"));
   // console.log("local", user);
   return (
     <>
-    <div id="myHeader">
-      <div className="content">
-        <div id="myLogo">
-          <h1>CyberMovie</h1>
-        </div>
-        <div id="myMenu" style={{ height: display ? 0 : 300 }}>
-          <div id="myMenuContent">
-            <div
-              className="myMenuItem"
-              onClick={() => {
-                if (window.innerWidth < 992) {
-                  showMyMenu();
-                }
-              }}
-            >
-              <Link
-                to="lichChieu"
-                smooth={true}
-                duration={500}
-                className="myLink"
+      <div id="myHeader">
+        <div className="content">
+          <div id="myLogo">
+            <h1>CyberMovie</h1>
+          </div>
+          <div id="myMenu" style={{ height: display ? 0 : 300 }}>
+            <div id="myMenuContent">
+              <div
+                className="myMenuItem"
+                onClick={() => {
+                  if (window.innerWidth < 992) {
+                    showMyMenu();
+                  }
+                }}
               >
-                Lịch Chiếu
-              </Link>
-            </div>
-            <div
-              className="myMenuItem"
-              onClick={() => {
-                if (window.innerWidth < 992) {
-                  showMyMenu();
-                }
-              }}
-            >
-              <Link to="cumRap" smooth={true} duration={500} className="myLink">
-                Cụm Rạp
-              </Link>
-            </div>
-            <div
-              className="myMenuItem"
-              onClick={() => {
-                if (window.innerWidth < 992) {
-                  showMyMenu();
-                }
-              }}
-            >
-              <Link to="tinTuc" smooth={true} duration={500} className="myLink">
-                Tin Tức
-              </Link>
-            </div>
-            <div
-              className="myMenuItem"
-              onClick={() => {
-                if (window.innerWidth < 992) {
-                  showMyMenu();
-                }
-              }}
-            >
-              <Link
-                to="ungDung"
-                smooth={true}
-                duration={500}
-                className="myLink"
-              >
-                Ứng Dụng
-              </Link>
-            </div>
-
-            {user !== null ? (
-              <div className="dangNhap">
-                <div id="userInfo">
-                  <i className="fa-solid fa-user"></i> {user.taiKhoan}
-                </div>
-                <div>
-                  <Popconfirm
-                    placement="top"
-                    title="Đăng xuất"
-                    description="Bạn chắc muốn đăng xuất khỏi hệ thống?"
-                    onConfirm={confirm}
-                    okText="Đăng xuất"
-                    cancelText="Không"
-                  >
-                    <Button id="myButtonDangXuat">
-                      <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                    </Button>
-                  </Popconfirm>
-                </div>
-              </div>
-            ) : (
-              <div className="dangNhap">
-                <NavLink
-                  to="/dangnhap"
-                  onClick={() => {
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth", // Tạo hiệu ứng cuộn mượt
-                    });
-                    if (window.innerWidth < 992) {
-                      showMyMenu();
-                    }
-                  }}
+                <Link
+                  to="danhSachPhim"
+                  smooth={true}
+                  duration={500}
+                  className="myLink"
                 >
-                  <i className="fa-solid fa-arrow-right-to-bracket"></i> Đăng
-                  nhập
-                </NavLink>
+                  Lịch Chiếu
+                </Link>
               </div>
-            )}
+              <div
+                className="myMenuItem"
+                onClick={() => {
+                  if (window.innerWidth < 992) {
+                    showMyMenu();
+                  }
+                }}
+              >
+                <Link
+                  to="cumRap"
+                  smooth={true}
+                  duration={500}
+                  className="myLink"
+                >
+                  Cụm Rạp
+                </Link>
+              </div>
+              <div
+                className="myMenuItem"
+                onClick={() => {
+                  if (window.innerWidth < 992) {
+                    showMyMenu();
+                  }
+                }}
+              >
+                <Link
+                  to="tinTuc"
+                  smooth={true}
+                  duration={500}
+                  className="myLink"
+                >
+                  Tin Tức
+                </Link>
+              </div>
+              <div
+                className="myMenuItem"
+                onClick={() => {
+                  if (window.innerWidth < 992) {
+                    showMyMenu();
+                  }
+                }}
+              >
+                <Link
+                  to="ungDung"
+                  smooth={true}
+                  duration={500}
+                  className="myLink"
+                >
+                  Ứng Dụng
+                </Link>
+              </div>
+
+              {user !== null ? (
+                <div className="dangNhap">
+                  <div id="userInfo">
+                    <i className="fa-solid fa-user"></i> {user.taiKhoan}
+                  </div>
+                  <div>
+                    <Popconfirm
+                      placement="top"
+                      title="Đăng xuất"
+                      description="Bạn chắc muốn đăng xuất khỏi hệ thống?"
+                      onConfirm={confirm}
+                      okText="Đăng xuất"
+                      cancelText="Không"
+                    >
+                      <Button id="myButtonDangXuat">
+                        <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                      </Button>
+                    </Popconfirm>
+                  </div>
+                </div>
+              ) : (
+                <div className="dangNhap">
+                  <NavLink
+                    to="/dangnhap"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth", // Tạo hiệu ứng cuộn mượt
+                      });
+                      if (window.innerWidth < 992) {
+                        showMyMenu();
+                      }
+                    }}
+                  >
+                    <i className="fa-solid fa-arrow-right-to-bracket"></i> Đăng
+                    nhập
+                  </NavLink>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="myBar">
+            <i className="fa-solid fa-bars" onClick={showMyMenu}></i>
           </div>
         </div>
-
-        <div className="myBar">
-          <i className="fa-solid fa-bars" onClick={showMyMenu}></i>
-        </div>
       </div>
-    </div>
-    <div className="myOverlay"></div>
+      <div className="myOverlay"></div>
     </>
   );
 };

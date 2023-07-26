@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { giaoTiepAPI } from "./giaoTiepAPI";
 const initialState = {
   isLogin: false,
-  user: {},
+  user: null,
   danhSachNguoiDung: [],
 };
 
@@ -26,7 +26,7 @@ const reduxSlice = createSlice({
     },
     dangXuat: (state, action) => {
       state.isLogin = false;
-      state.user = {};
+      state.user = null;
     },
   },
   extraReducers: (builder) => {

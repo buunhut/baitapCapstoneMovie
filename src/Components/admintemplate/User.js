@@ -1,7 +1,6 @@
 import "./user.scss";
 import React, { useEffect, useState } from "react";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
-import { Space, Table, Tag, Popconfirm } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUser } from "../../redux/reduxSlice";
 import { useFormik } from "formik";
@@ -18,7 +17,7 @@ const User = () => {
   }, [dispatch]);
 
   const { danhSachNguoiDung } = useSelector((state) => state.duLieu);
-
+  //chức năng xoá tài khoản
   const handleXoa = (taiKhoan) => {
     giaoTiepAPI
       .xoaNguoiDung(taiKhoan)
@@ -29,13 +28,28 @@ const User = () => {
         console.log(error);
       });
   };
+  //gáng dữ liệu lại cho input khi click sửa
   const handleSua = (taiKhoan) => {
+    const nguoiDungCanSua = danhSachNguoiDung.find(
+      (user) => user.taiKhoan === taiKhoan
+    );
+
+    // Gán giá trị lại cho input
+    formik.setValues({
+      taiKhoan: nguoiDungCanSua.taiKhoan,
+      matKhau: nguoiDungCanSua.matKhau,
+      hoTen: nguoiDungCanSua.hoTen,
+      email: nguoiDungCanSua.email,
+      soDt: nguoiDungCanSua.soDT,
+      maNhom: nguoiDungCanSua.maNhom, //API gọi lên không có
+      maLoaiNguoiDung: nguoiDungCanSua.maLoaiNguoiDung,
+    });
+
     setMyWidth(400);
     setMyEdit(true);
-    // console.log(myEdit);
   };
   const [messageApi, contextHolder] = message.useMessage();
-
+  //xử lý form bằng formik
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",
@@ -72,6 +86,17 @@ const User = () => {
     }),
     onSubmit: (values) => {
       if (myEdit) {
+        giaoTiepAPI
+          .capNhatThongTinNguoiDung(values)
+          .then((result) => {
+            messageApi.success("Cập nhật người dùng thành công");
+            dispatch(getAllUser());
+            setMyWidth(0);
+            setMyEdit(false);
+          })
+          .catch((error) => {
+            messageApi.error("Cập nhật người dùng thất bại");
+          });
       } else {
         giaoTiepAPI
           .themNguoiDung(values)
@@ -89,13 +114,14 @@ const User = () => {
   });
   const { handleBlur, handleChange, handleSubmit, values } = formik;
 
-  // Function to handle password visibility toggle
-
+  //ẩn hiện mật khẩu
   const [hienMatKhau, setHienMatKhau] = useState(false);
 
   const anHienMatKhau = () => {
     setHienMatKhau((anMatKhau) => !anMatKhau);
   };
+
+  //chức năng tìm kiếm
   const handleTimKiemNguoiDung = (event) => {
     const khachHang = event.target.value.trim().toLowerCase();
     const ketQuaTimKiem = danhSachNguoiDung.filter(
@@ -107,7 +133,7 @@ const User = () => {
     setDanhSachTimKiem(ketQuaTimKiem);
   };
   const [danhSachTimKiem, setDanhSachTimKiem] = useState(danhSachNguoiDung);
-
+  //cập nhật danh sách tìm kiếm
   useEffect(() => {
     setDanhSachTimKiem(danhSachNguoiDung);
   }, [danhSachNguoiDung]);
@@ -269,6 +295,7 @@ const User = () => {
               placeholder="Tài khoản"
               onChange={handleChange}
               onBlur={handleBlur}
+              disabled={myEdit}
             />
           </div>
           {formik.errors.taiKhoan && formik.touched.taiKhoan ? (

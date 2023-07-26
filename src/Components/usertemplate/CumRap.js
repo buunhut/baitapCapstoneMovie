@@ -28,7 +28,9 @@ const CumRap = () => {
   };
   return (
     <div id="cumRap">
-      <Tabs tabPosition="left" items={renderItemTab()} />
+      <div id="myTab">
+        <Tabs tabPosition="left" items={renderItemTab()} />
+      </div>
     </div>
   );
 };

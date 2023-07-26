@@ -6,37 +6,30 @@ import TinTuc from "./TinTuc";
 import UngDung from "./UngDung";
 import DanhSachPhim from "./DanhSachPhim";
 import { myLocalStore } from "../../redux/myLocalStore";
+import MyBanner from "./MyBanner";
 
 const HomePage = () => {
-  const [user, setUser] = useState({})
-  const navigate = useNavigate()
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
   useEffect(() => {
-    const localUser = myLocalStore.goiLocalStore("user")
+    const localUser = myLocalStore.goiLocalStore("user");
     if (localUser) {
       setUser(localUser);
-
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    // Now, we check the user.maLoaiNguoiDung after setting the user state.
-    // This will be triggered after the first useEffect has run and updated the user state.
     if (user.maLoaiNguoiDung === "QuanTri") {
       navigate("/quanly");
     }
   }, [user, navigate]);
 
-
-
-
-
-
-
-
   return (
     <div id="myMain">
       <MyHeader />
+
       <Outlet />
+      <MyBanner />
       <DanhSachPhim />
 
       <CumRap />
@@ -44,7 +37,6 @@ const HomePage = () => {
       <UngDung />
     </div>
   );
-
 };
 
 export default HomePage;
