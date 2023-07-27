@@ -47,9 +47,16 @@ const MovieItem = ({ maHeThongRap }) => {
                               <NavLink
                                 to={`/datvexemphim/${suatChieu.maLichChieu}`}
                               >
-                                {moment(suatChieu.ngayChieuGioChieu).format(
-                                  "DD/MM/YYYY ~ h:mm"
-                                )}
+                                <span style={{ color: "green" }}>
+                                  {moment(suatChieu.ngayKhoiChieu).format(
+                                    "DD/MM/YYYY"
+                                  )}
+                                </span>
+                                <span style={{ color: "red" }}>
+                                  {moment(suatChieu.ngayKhoiChieu).format(
+                                    " ~ hh:mm"
+                                  )}
+                                </span>{" "}
                               </NavLink>
                             </p>
                           );

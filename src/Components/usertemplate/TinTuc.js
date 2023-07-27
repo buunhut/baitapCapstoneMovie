@@ -7,18 +7,18 @@ const onChange = (key) => {
 const items = [
   {
     key: "1",
-    label: `Tin tức`,
+    label: `Điện Ảnh 24h`,
     children: `Nội dung tin tức`,
   },
   {
     key: "2",
-    label: `Sự kiện`,
-    children: `Nội dung sự kiên`,
+    label: `Sự Kiện`,
+    children: `Nội dung sự kiện`,
   },
   {
     key: "3",
-    label: `Tab 3`,
-    children: `Content of Tab Pane 3`,
+    label: `Khuyến Mãi`,
+    children: `Nội dung khuyến mãi`,
   },
 ];
 const TinTuc = () => {

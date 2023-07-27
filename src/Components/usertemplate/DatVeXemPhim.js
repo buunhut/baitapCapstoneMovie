@@ -33,14 +33,11 @@ const DatVeXemPhim = () => {
   //danh sách ghế đã chon
   const danhSachGheDaChon = danhSachGhe?.filter((item) => item.daChon === true);
   let tongTien = 0;
-  danhSachGhe?.map((item) => {
+  danhSachGhe?.forEach((item) => {
     if (item.daChon === true) {
       return (tongTien += item.giaVe);
     }
   });
-  // console.log("da chon", tongTien);
-
-  //tổng tiền
 
   return (
     <div>
@@ -55,6 +52,7 @@ const DatVeXemPhim = () => {
                 <button
                   type="button"
                   key={index}
+                  disabled={item.daDat}
                   style={{
                     backgroundColor: item.daChon
                       ? "blueviolet"

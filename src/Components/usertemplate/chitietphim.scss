@@ -7,10 +7,24 @@
   justify-content: space-between;
   align-items: flex-start;
   .myImg {
-    width: 500px;
-    height: 500px;
+    width: 300px;
     img {
       width: 100%;
+    }
+  }
+  .thongTinPhim {
+    h1 {
+      color: blueviolet;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    p {
+      color: silver;
+      font-size: 14px;
+      width: 300px;
     }
   }
 }
