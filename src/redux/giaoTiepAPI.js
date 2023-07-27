@@ -6,6 +6,8 @@ const TokenCybersoft =
 const Authorization =
   "bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
 
+console.log(Authorization);
+
 export const giaoTiepAPI = {
   laydanhSachBanner: () => {
     const result = axios({
@@ -62,7 +64,7 @@ export const giaoTiepAPI = {
   layThongTinLichChieuHeThongRap: (maHeThongRap) => {
     const result = axios({
       method: "get",
-      url: `https://movienew.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP01`,
+      url: `https://movienew.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP09`,
       headers: {
         TokenCybersoft,
       },
@@ -115,6 +117,36 @@ export const giaoTiepAPI = {
       },
 
       data: data,
+    });
+    return result;
+  },
+  layThongTinPhim: (maPhim) => {
+    const result = axios({
+      method: "get",
+      url: `https://movienew.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+      headers: {
+        TokenCybersoft,
+      },
+    });
+    return result;
+  },
+  layThongTinLichChieuPhim: (maPhim) => {
+    const result = axios({
+      method: "get",
+      url: `https://movienew.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+      headers: {
+        TokenCybersoft,
+      },
+    });
+    return result;
+  },
+  layDanhSachPhongVe: (maLichChieu) => {
+    const result = axios({
+      method: "get",
+      url: `https://movienew.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+      headers: {
+        TokenCybersoft,
+      },
     });
     return result;
   },

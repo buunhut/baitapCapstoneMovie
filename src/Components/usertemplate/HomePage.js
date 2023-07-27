@@ -7,6 +7,7 @@ import UngDung from "./UngDung";
 import DanhSachPhim from "./DanhSachPhim";
 import { myLocalStore } from "../../redux/myLocalStore";
 import MyBanner from "./MyBanner";
+import MyFooter from "./MyFooter";
 
 const HomePage = () => {
   const [user, setUser] = useState({});
@@ -35,6 +36,7 @@ const HomePage = () => {
       <CumRap />
       <TinTuc />
       <UngDung />
+      <MyFooter />
     </div>
   );
 };

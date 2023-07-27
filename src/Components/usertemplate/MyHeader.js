@@ -1,7 +1,7 @@
 import "./myheader.scss";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Link } from "react-scroll";
 import { myLocalStore } from "../../redux/myLocalStore";
 import { dangXuat } from "../../redux/reduxSlice";
@@ -11,6 +11,8 @@ import { Button, message, Popconfirm } from "antd";
 
 const MyHeader = () => {
   const dispatch = useDispatch();
+  const param = useParams();
+  // console.log(param.id)
 
   const confirm = () => {
     dispatch(dangXuat());
@@ -48,7 +50,9 @@ const MyHeader = () => {
       <div id="myHeader">
         <div className="content">
           <div id="myLogo">
-            <h1>CyberMovie</h1>
+            <NavLink to="/">
+              <h1>CyberMovie</h1>
+            </NavLink>
           </div>
           <div id="myMenu" style={{ height: display ? 0 : 300 }}>
             <div id="myMenuContent">
@@ -60,14 +64,18 @@ const MyHeader = () => {
                   }
                 }}
               >
-                <Link
-                  to="danhSachPhim"
-                  smooth={true}
-                  duration={500}
-                  className="myLink"
-                >
-                  Lịch Chiếu
-                </Link>
+                {param.id ? (
+                  <NavLink to="/">Lịch Chiếu</NavLink>
+                ) : (
+                  <Link
+                    to="danhSachPhim"
+                    smooth={true}
+                    duration={500}
+                    className="myLink"
+                  >
+                    Lịch Chiếu
+                  </Link>
+                )}
               </div>
               <div
                 className="myMenuItem"
@@ -77,14 +85,18 @@ const MyHeader = () => {
                   }
                 }}
               >
-                <Link
-                  to="cumRap"
-                  smooth={true}
-                  duration={500}
-                  className="myLink"
-                >
-                  Cụm Rạp
-                </Link>
+                {param.id ? (
+                  <NavLink to="/">Cụm Rạp</NavLink>
+                ) : (
+                  <Link
+                    to="cumRap"
+                    smooth={true}
+                    duration={500}
+                    className="myLink"
+                  >
+                    Cụm Rạp
+                  </Link>
+                )}
               </div>
               <div
                 className="myMenuItem"
@@ -94,14 +106,18 @@ const MyHeader = () => {
                   }
                 }}
               >
-                <Link
-                  to="tinTuc"
-                  smooth={true}
-                  duration={500}
-                  className="myLink"
-                >
-                  Tin Tức
-                </Link>
+                {param.id ? (
+                  <NavLink to="/">Tin Tức</NavLink>
+                ) : (
+                  <Link
+                    to="tinTuc"
+                    smooth={true}
+                    duration={500}
+                    className="myLink"
+                  >
+                    Tin Tức
+                  </Link>
+                )}
               </div>
               <div
                 className="myMenuItem"
@@ -111,14 +127,18 @@ const MyHeader = () => {
                   }
                 }}
               >
-                <Link
-                  to="ungDung"
-                  smooth={true}
-                  duration={500}
-                  className="myLink"
-                >
-                  Ứng Dụng
-                </Link>
+                {param.id ? (
+                  <NavLink to="/">Ứng Dụng</NavLink>
+                ) : (
+                  <Link
+                    to="ungDung"
+                    smooth={true}
+                    duration={500}
+                    className="myLink"
+                  >
+                    Ứng Dụng
+                  </Link>
+                )}
               </div>
 
               {user !== null ? (

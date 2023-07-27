@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { giaoTiepAPI } from "./giaoTiepAPI";
+import { myLocalStore } from "./myLocalStore";
 const initialState = {
   isLogin: false,
-  user: null,
+  user: myLocalStore.goiLocalStore("user"),
   danhSachNguoiDung: [],
 };
 

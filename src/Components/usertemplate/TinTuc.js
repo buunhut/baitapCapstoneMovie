@@ -7,13 +7,13 @@ const onChange = (key) => {
 const items = [
   {
     key: "1",
-    label: `Tab 1`,
-    children: `Content of Tab Pane 1`,
+    label: `Tin tức`,
+    children: `Nội dung tin tức`,
   },
   {
     key: "2",
-    label: `Tab 2`,
-    children: `Content of Tab Pane 2`,
+    label: `Sự kiện`,
+    children: `Nội dung sự kiên`,
   },
   {
     key: "3",

@@ -1,0 +1,16 @@
+#chiTietPhim {
+  padding: 140px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+  .myImg {
+    width: 500px;
+    height: 500px;
+    img {
+      width: 100%;
+    }
+  }
+}

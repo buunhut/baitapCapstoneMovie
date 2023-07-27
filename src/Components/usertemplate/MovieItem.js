@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 import { Tabs } from "antd";
 import "./movieitem.scss";
+import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 const MovieItem = ({ maHeThongRap }) => {
   const [lichChieu, setLichChieu] = useState([]);
@@ -41,7 +43,15 @@ const MovieItem = ({ maHeThongRap }) => {
                       <div className="suatChieu">
                         {item.lstLichChieuTheoPhim.map((suatChieu, index) => {
                           return (
-                            <p key={index}>{suatChieu.ngayChieuGioChieu}</p>
+                            <p key={index}>
+                              <NavLink
+                                to={`/datvexemphim/${suatChieu.maLichChieu}`}
+                              >
+                                {moment(suatChieu.ngayChieuGioChieu).format(
+                                  "DD/MM/YYYY ~ h:mm"
+                                )}
+                              </NavLink>
+                            </p>
                           );
                         })}
                       </div>

@@ -1,0 +1,168 @@
+#datVe {
+  padding: 100px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .datVeContent {
+    width: 800px;
+    margin: 30px;
+    // .manHinh {
+    //   height: 30px;
+    //   text-align: center;
+    //   margin: 30px;
+    //   background-color: orangered;
+    // }
+    .danhSachGhe {
+      width: 800px;
+      // background-color: red;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      button {
+        background-color: silver;
+        color: white;
+
+        border-radius: 8px;
+        width: 42px;
+        height: 42px;
+        margin: 3px;
+        &:hover {
+          background-color: orangered;
+        }
+      }
+    }
+    .ghiChu {
+      width: 260px;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .ghiChuContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .daDat {
+          width: 40px;
+          height: 40px;
+          background-color: red;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 8px;
+          color: white;
+        }
+        .gheVIP {
+          width: 40px;
+          height: 40px;
+          background-color: orange;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 8px;
+          color: white;
+        }
+        .gheThuong {
+          width: 40px;
+          height: 40px;
+          background-color: green;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 8px;
+          color: white;
+        }
+
+        span {
+          margin: 10px;
+        }
+      }
+    }
+  }
+  .thongTinDatVe {
+    padding: 20px;
+    width: 400px;
+    background-color: whitesmoke;
+    margin-top: 30px;
+    p {
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      color: blueviolet;
+    }
+    span {
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 14px;
+      text-align: right;
+    }
+
+    div {
+      padding: 10px 0;
+      border-bottom: 1px solid blueviolet;
+
+      display: flex;
+      justify-content: space-between;
+    }
+    div.listGhe {
+      border: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 5px;
+      // width: 300px;
+      span {
+        border: 1px solid silver;
+        font-size: 12px;
+        width: 40px;
+        height: 24;
+        line-height: 24px;
+        text-align: center;
+        color: blueviolet;
+        font-weight: 500;
+      }
+    }
+    button {
+      margin-top: 20px;
+      background-color: blueviolet;
+      color: white;
+      height: 38px;
+      width: 100%;
+      &:hover {
+        background-color: orangered;
+      }
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  #datVe {
+    padding: 100px 0;
+    max-width: 400px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    .datVeContent {
+      width: 400px;
+      overflow: scroll;
+    }
+    .thongTinDatVe {
+      div {
+        padding: 10px 0;
+        border-bottom: 1px solid blueviolet;
+
+        display: flex;
+        justify-content: space-between;
+      }
+      button {
+        margin-top: 20px;
+        background-color: blueviolet;
+        color: white;
+        height: 38px;
+        width: 100%;
+        &:hover {
+          background-color: orangered;
+        }
+      }
+    }
+  }
+}

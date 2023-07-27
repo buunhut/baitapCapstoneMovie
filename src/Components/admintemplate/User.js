@@ -138,70 +138,6 @@ const User = () => {
     setDanhSachTimKiem(danhSachNguoiDung);
   }, [danhSachNguoiDung]);
 
-  // const columns = [
-  //   {
-  //     title: "ID",
-  //     dataIndex: "id",
-  //     key: "id",
-  //   },
-  //   {
-  //     title: "Taif Khoản",
-  //     dataIndex: "taiKhoan",
-  //     key: "taiKhoan",
-  //   },
-  //   {
-  //     title: "Họ Tên",
-  //     dataIndex: "hoTen",
-  //     key: "hoTen",
-  //   },
-  //   {
-  //     title: "Email",
-  //     dataIndex: "email",
-  //     key: "email",
-  //   },
-  //   {
-  //     title: "Số Điện Thoại",
-  //     dataIndex: "soDT",
-  //     key: "soDT",
-  //   },
-  //   {
-  //     title: "Loại Người Dùng",
-  //     dataIndex: "maLoaiNguoiDung",
-  //     key: "maLoaiNguoiDung",
-  //     render: (text, record, index) => {
-  //       return <Tag> {text === "QuanTri" ? "Quản Trị" : "Khách hàng"}</Tag>;
-  //     },
-  //   },
-  //   {
-  //     title: "Action",
-  //     key: "action",
-  //     render: (_, record) => (
-  //       <Space size="middle">
-  //         <Popconfirm
-  //           title="Xoá người dùng"
-  //           description="Bạn có chắc muốn xoá người dùng này?"
-  //           onConfirm={() => {
-  //             giaoTiepAPI
-  //               .xoaNguoiDung(record.taiKhoan)
-  //               .then((result) => {
-  //                 dispatch(getAllUser());
-  //               })
-  //               .catch((error) => {
-  //                 console.log(error);
-  //               });
-  //           }}
-  //         >
-  //           <button className="bg-red-600">Xoá</button>
-  //         </Popconfirm>
-  //         <button>Sửa</button>
-  //       </Space>
-  //     ),
-  //   },
-  // ];
-  // let newDanhSachNguoiDung = danhSachNguoiDung.map((item, index) => {
-  //   return { ...item, id: index + 1 };
-  // });
-
   return (
     <div id="user">
       {contextHolder}
@@ -220,7 +156,7 @@ const User = () => {
           }
         }}
       >
-        Add user
+        Thêm người dùng
       </button>
       <div className="timKiem">
         <input

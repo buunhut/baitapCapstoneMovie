@@ -3,7 +3,7 @@
   width: 100%;
   z-index: 5;
   .content {
-    // width: 1140px;
+    // width: 1200px;
     height: 80px;
     margin: 0 auto;
     padding: 0 30px;
@@ -67,7 +67,7 @@
       #myMenu {
         position: absolute;
         z-index: 3;
-        top: 50px;
+        top: 80px;
         left: 0;
         width: 100%;
         overflow: hidden;
@@ -95,9 +95,9 @@
             padding: 0 20px;
             display: flex;
             justify-content: space-between;
-            background-color: black;
+            background-color: rgb(30, 29, 29);
             border-bottom: 1px solid orangered;
-            color: blueviolet;
+            color: white;
             font-size: 20px;
             font-weight: 500;
           }

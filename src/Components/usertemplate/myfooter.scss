@@ -1,0 +1,41 @@
+#myFooter {
+  background-color: whitesmoke;
+  padding: 50px 0;
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: blueviolet;
+      margin-bottom: 10px;
+    }
+    div {
+      margin: 5px;
+      color: silver;
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  #myFooter {
+    background-color: whitesmoke;
+    padding: 30px;
+    .content {
+      flex-direction: column;
+      h1 {
+        font-size: 20px;
+        font-weight: 600;
+        color: blueviolet;
+        margin-bottom: 10px;
+      }
+      div {
+        margin-top: 10px;
+        color: silver;
+      }
+    }
+  }
+}

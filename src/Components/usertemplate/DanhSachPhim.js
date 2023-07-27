@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Modal from "react-modal";
 import "./danhsachphim.scss";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
@@ -77,7 +78,9 @@ const DanhSachPhim = () => {
                     className="datVe"
                     onClick={() => chiTietPhim(item.maPhim)}
                   >
-                    Chi tiết
+                    <NavLink to={`/chitietphim/${item.maPhim}`}>
+                      Chi tiết
+                    </NavLink>
                   </div>
                 </div>
               </div>
