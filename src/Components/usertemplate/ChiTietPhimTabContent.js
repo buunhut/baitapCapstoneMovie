@@ -9,9 +9,24 @@ const ChiTietPhimTabContent = ({ cumRapChieu }) => {
       return {
         key: index,
         label: (
-          <div>
-            <p>{item.tenCumRap}</p>
-            <p>{item.diaChi}</p>
+          <div style={{ textAlign: "left" }}>
+            <p
+              style={{
+                color: "blueviolet",
+                fontSize: "16px",
+                fontWeight: "500",
+              }}
+            >
+              {item.tenCumRap}
+            </p>
+            <p
+              style={{
+                // color: "silver",
+                fontSize: "14px",
+              }}
+            >
+              {item.diaChi}
+            </p>
           </div>
         ),
         children: (
@@ -22,9 +37,12 @@ const ChiTietPhimTabContent = ({ cumRapChieu }) => {
                   key={index}
                   style={{
                     width: "150px",
+                    height: "30px",
+                    lineHeight: "30px",
                     border: "1px solid blueviolet",
                     textAlign: "center",
                     borderRadius: "8px",
+                    marginBottom: "10px",
                   }}
                   className="lichChieu"
                 >
@@ -34,7 +52,7 @@ const ChiTietPhimTabContent = ({ cumRapChieu }) => {
                     </span>
                     <span style={{ color: "red" }}>
                       {moment(item.ngayChieuGioChieu).format(" ~ hh:mm")}
-                    </span>{" "}
+                    </span>
                   </NavLink>
                 </p>
               );

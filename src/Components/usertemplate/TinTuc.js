@@ -7,17 +7,17 @@ const onChange = (key) => {
 const items = [
   {
     key: "1",
-    label: `Điện Ảnh 24h`,
+    label: <h1>Điện Ảnh 24h</h1>,
     children: `Nội dung tin tức`,
   },
   {
     key: "2",
-    label: `Sự Kiện`,
+    label: <h1>Sự Kiện</h1>,
     children: `Nội dung sự kiện`,
   },
   {
     key: "3",
-    label: `Khuyến Mãi`,
+    label: <h1>Khuyến Mãi</h1>,
     children: `Nội dung khuyến mãi`,
   },
 ];

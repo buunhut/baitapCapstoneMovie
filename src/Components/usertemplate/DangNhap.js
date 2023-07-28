@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import MyHeader from "./MyHeader";
+import MyFooter from "./MyFooter";
 import "./dangnhap.scss";
 import { Tabs } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
@@ -13,7 +15,7 @@ import { myLocalStore } from "../../redux/myLocalStore";
 const DangNhap = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
-  const duLieu = useSelector((state) => state.duLieu);
+  // const duLieu = useSelector((state) => state.duLieu);
   //   console.log(duLieu);
   //xử lý form bằng formik đăng nhập
   const formik = useFormik({
@@ -267,6 +269,7 @@ const DangNhap = () => {
 
   return (
     <>
+      <MyHeader />
       <div id="dangNhap">
         <div id="dangNhapContent">
           <button
@@ -283,6 +286,7 @@ const DangNhap = () => {
           <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
         </div>
       </div>
+      <MyFooter />
     </>
   );
 };

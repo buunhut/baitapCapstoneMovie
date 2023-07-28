@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./quanly.scss";
 
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { myLocalStore } from "../../redux/myLocalStore";
-// const { Header, Sider, Content } = Layout;
+import { useDispatch } from "react-redux";
+import { dangXuat } from "../../redux/reduxSlice";
+import { Button, Popconfirm } from "antd";
 
 const QuanLy = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,89 +15,47 @@ const QuanLy = () => {
     setUser(localUser);
 
     if (localUser === null) {
-      navigate("/");
+      navigate("/dangnhap");
     } else if (localUser.maLoaiNguoiDung === "QuanTri") {
       // Do nothing, the component will be rendered for this case
     } else {
-      navigate("/");
+      navigate("/dangnhap");
     }
   }, [navigate]);
 
+  const dispatch = useDispatch();
+
   //logout
   const handleLogout = () => {
+    dispatch(dangXuat());
     myLocalStore.xoaLocalStore("user");
-    setUser({});
-    navigate("/");
+
+    setUser(null);
+    navigate("/dangnhap");
   };
 
   if (user.maLoaiNguoiDung === "QuanTri") {
     return (
-      // <Layout className='min-h-screen'>
-      //   <Sider trigger={null} collapsible collapsed={collapsed}>
-      //     <div className="logo-vertical">
-      //       <p style={{color: "white"}}>admin</p>
-      //     </div>
-      //     <Menu
-      //       theme="dark"
-      //       mode="inline"
-      //       defaultSelectedKeys={['1']}
-      //       items={[
-      //         {
-      //           key: '1',
-      //           icon: <UserOutlined />,
-      //           label: 'nav 1',
-      //         },
-      //         {
-      //           key: '2',
-      //           icon: <VideoCameraOutlined />,
-      //           label: 'nav 2',
-      //         },
-      //         {
-      //           key: '3',
-      //           icon: <UploadOutlined />,
-      //           label: 'nav 3',
-      //         },
-      //       ]}
-      //     />
-      //   </Sider>
-      //   <Layout>
-      //     <Header
-      //       style={{
-      //         padding: 0,
-      //         background: colorBgContainer,
-      //       }}
-      //     >
-      //       <Button
-      //         type="text"
-      //         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      //         onClick={() => setCollapsed(!collapsed)}
-      //         style={{
-      //           fontSize: '16px',
-      //           width: 64,
-      //           height: 64,
-      //         }}
-      //       />
-      //     </Header>
-      //     <Content
-      //       style={{
-      //         margin: '24px 16px',
-      //         padding: 24,
-      //         minHeight: 280,
-      //         background: colorBgContainer,
-      //       }}
-      //     >
-      //       Content
-      //     </Content>
-      //   </Layout>
-      // </Layout>
       <div id="quanLy">
         <div id="quanLyMenu">
-          <div className="info">
-            <p>Admin</p>
-            <i
-              className="fa-solid fa-arrow-right-from-bracket"
-              onClick={handleLogout}
-            ></i>
+          <div className="info" style={{ color: "red" }}>
+            <p>{user?.taiKhoan}</p>
+
+            <Popconfirm
+              placement="top"
+              title="Đăng xuất"
+              description="Bạn chắc muốn đăng xuất khỏi hệ thống?"
+              onConfirm={handleLogout}
+              okText="Đăng xuất"
+              cancelText="Không"
+            >
+              <Button id="myButtonDangXuat">
+                <i
+                  className="fa-solid fa-arrow-right-from-bracket"
+                  style={{ color: "white" }}
+                ></i>
+              </Button>
+            </Popconfirm>
           </div>
           <div>
             <ul>

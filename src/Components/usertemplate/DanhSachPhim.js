@@ -3,14 +3,31 @@ import { NavLink } from "react-router-dom";
 import Modal from "react-modal";
 import "./danhsachphim.scss";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   set_loading_ended,
+//   set_loading_started,
+// } from "../../redux/loadingSlice";
+import PageLoading from "./PageLoading";
 const DanhSachPhim = () => {
   const [danhSachPhim, setDanhSachPhim] = useState([]);
+
+  // const dispatch = useDispatch();
+  // const { isLoading } = useSelector((state) => state.loading);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    // dispatch(set_loading_started());
+
     giaoTiepAPI
       .layDanhSachPhim()
       .then((result) => {
+        // dispatch(set_loading_ended());
+        setIsLoading(false);
+
         setDanhSachPhim(result.data.content);
         // console.log(result.data.content);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -32,6 +49,7 @@ const DanhSachPhim = () => {
   };
   return (
     <div id="danhSachPhim">
+      <div>{isLoading ? <PageLoading /> : <></>}</div>
       <div>
         {/* modal play video */}
         <Modal

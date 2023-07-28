@@ -1,5 +1,5 @@
 #myFooter {
-  background-color: whitesmoke;
+  background-color: rgb(42, 38, 38);
   padding: 50px 0;
   .content {
     max-width: 1200px;
@@ -11,12 +11,26 @@
     h1 {
       font-size: 20px;
       font-weight: 600;
-      color: blueviolet;
+      color: white;
       margin-bottom: 10px;
     }
     div {
       margin: 5px;
       color: silver;
+    }
+    div.doiTac {
+      // background-color: red;
+      width: 300px;
+      .doiTacContent {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
     }
   }
 }

@@ -6,8 +6,6 @@ const TokenCybersoft =
 const Authorization =
   "bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
 
-console.log(Authorization);
-
 export const giaoTiepAPI = {
   laydanhSachBanner: () => {
     const result = axios({

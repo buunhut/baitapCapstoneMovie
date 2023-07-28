@@ -1,6 +1,18 @@
 #tinTuc {
-  height: 1500px;
+  height: 1000px;
   padding-top: 80px;
   text-align: center;
-
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  #tinTuc {
+    h1 {
+      font-size: 18px;
+      padding: 0 10px;
+    }
+  }
 }

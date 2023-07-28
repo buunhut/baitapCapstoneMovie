@@ -4,19 +4,19 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
     padding: 20px;
     .phimItem {
-      width: 260px;
+      width: 275px;
       height: 360px;
       margin-bottom: 50px;
       cursor: pointer;
       .imgContent {
         position: relative;
         img {
-          width: 260px;
+          width: 275px;
           height: 280px;
           border-radius: 8px;
         }
@@ -94,6 +94,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #danhSachPhim {
+    .danhSachPhimContent {
+      justify-content: center;
     }
   }
 }

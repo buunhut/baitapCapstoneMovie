@@ -1,6 +1,6 @@
-#user {
+#film {
   margin: 20px;
-  #addUser {
+  #addFilm {
     background-color: blueviolet;
     color: white;
     padding: 10px 20px;
@@ -25,15 +25,22 @@
   .myTable {
     margin-top: 30px;
     min-width: 400px;
-    overflow: auto;
+    height: 600px;
+    overflow: scroll;
+    position: relative;
     table {
       border-collapse: collapse;
       width: 100%;
+      position: relative;
       thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
         tr {
           th {
             padding: 10px 20px;
-            background-color: blueviolet;
+            background-color: blueviolet; //help me fixed this col
             color: white;
             font-size: 16px;
             font-size: 400;
@@ -41,7 +48,11 @@
         }
       }
       tbody {
+        margin-top: 40px;
         tr {
+          &:nth-child(even) {
+            background-color: rgba(245, 245, 245, 0.6);
+          }
           td {
             padding: 10px 20px;
             font-size: 16px;
@@ -70,6 +81,10 @@
               &:hover {
                 background-color: blueviolet;
               }
+            }
+            img {
+              width: 60px;
+              height: 60px;
             }
           }
         }

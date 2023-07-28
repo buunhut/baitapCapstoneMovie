@@ -23,14 +23,30 @@ const MovieItem = ({ maHeThongRap }) => {
               textAlign: "left",
               width: "400px",
             }}
+            key={index}
           >
-            <p>{item.tenCumRap}</p>
-            <p>{item.diaChi}</p>
+            <p
+              style={{
+                color: "blueviolet",
+                fontSize: "16px",
+                fontWeight: "500",
+              }}
+            >
+              {item.tenCumRap}
+            </p>
+            <p
+              style={{
+                // color: "silver",
+                fontSize: "14px",
+              }}
+            >
+              {item.diaChi}
+            </p>
           </div>
         ),
         key: index,
         children: (
-          <div id="movieItem">
+          <div id="movieItem" key={index}>
             {item.danhSachPhim.map((item, index) => {
               if (item.dangChieu) {
                 return (

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUser } from "../../redux/reduxSlice";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { message } from "antd";
+import { Button, Popconfirm, message } from "antd";
 
 const User = () => {
   const dispatch = useDispatch();
@@ -201,12 +201,18 @@ const User = () => {
                     >
                       Sửa
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => handleXoa(item.taiKhoan)}
+                    <Popconfirm
+                      placement="top"
+                      title="Xoá tài khoản"
+                      description="Bạn chắc muốn xoá không?"
+                      onConfirm={() => handleXoa(item.taiKhoan)}
+                      okText="Xoá"
+                      cancelText="Không"
                     >
-                      Xoá
-                    </button>
+                      <Button id="myButtonDangXuat">
+                        <span>Xoá</span>
+                      </Button>
+                    </Popconfirm>
                   </td>
                 </tr>
               );
