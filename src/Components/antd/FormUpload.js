@@ -1,13 +1,22 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Form, Input, Switch, Upload } from "antd";
-import React from "react";
+import { Button, DatePicker, Form, Input, Modal, Switch, Upload } from "antd";
+import React, { useState } from "react";
 import * as Yup from "yup";
+import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 const normFile = (e) => {
   if (Array.isArray(e)) {
     return e;
   }
   return e?.fileList;
 };
+
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
 const FormUpload = () => {
   //dùng yup check validation
@@ -23,13 +32,35 @@ const FormUpload = () => {
   });
 
   const onFinish = (values) => {
-    // Handle form submission here
-    console.log("Form values:", values);
+    // code thêm phim
+    giaoTiepAPI
+      .themPhimUploadHinh(values)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  //   const hanhdleThemPhim = () => {
-  //     // alert();
-  //   };
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [fileList, setFileList] = useState([]);
+
+  const handleCancel = () => setPreviewOpen(false);
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+    setPreviewTitle(
+      file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
+    );
+  };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
   return (
     <>
       <Form
@@ -118,34 +149,48 @@ const FormUpload = () => {
         <Form.Item label="Hot" name="hot" valuePropName="checked">
           <Switch />
         </Form.Item>
+
         <Form.Item
-          label="Upload"
+          label="Hình ảnh"
           name="hinhAnh"
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >
-          <Upload action="/upload.do" listType="picture-card">
+          <Upload
+            //   action="/upload.do"
+            fileList={fileList} // Provide the fileList from state
+            listType="picture-card"
+            multiple={true}
+            showUploadList={true}
+            beforeUpload={() => false} // Prevent immediate upload on file selection
+            onChange={handleChange} // Handle change and reorder action
+            //   onRemove={handleRemove} // Handle remove action
+            onPreview={handlePreview} // Handle preview action
+          >
             <div>
               <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 5,
-                }}
-              >
-                Upload
-              </div>
+              <div style={{ marginTop: 5 }}>Chọn hình</div>
             </div>
           </Upload>
         </Form.Item>
+        <Modal
+          open={previewOpen}
+          title={previewTitle}
+          footer={null}
+          onCancel={handleCancel}
+        >
+          <img alt="example" style={{ width: "100%" }} src={previewImage} />
+        </Modal>
+
         <Form.Item>
           <Button
-            // onClick={hanhdleThemPhim}
-            type="primary"
+            // type="primary"
             htmlType="submit"
             style={{
               width: "340px",
               margin: "0 auto",
               backgroundColor: "blueviolet",
+              color: "white",
             }}
           >
             Thêm phim

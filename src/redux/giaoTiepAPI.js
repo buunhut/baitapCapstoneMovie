@@ -6,7 +6,7 @@ const TokenCybersoft =
 const Authorization =
   "bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
 
-console.log(Authorization);
+// console.log(Authorization);
 
 export const giaoTiepAPI = {
   laydanhSachBanner: () => {
@@ -93,7 +93,6 @@ export const giaoTiepAPI = {
     return result;
   },
   themNguoiDung: (data) => {
-    // const tokenXoa = myLocalStore.goiLocalStore("user");
     const result = axios({
       method: "post",
       url: "https://movienew.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
@@ -157,6 +156,17 @@ export const giaoTiepAPI = {
         TokenCybersoft,
         Authorization,
       },
+    });
+    return result;
+  },
+  themPhimUploadHinh: (data) => {
+    const result = axios({
+      method: "post",
+      url: "https://movienew.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
+      headers: {
+        TokenCybersoft,
+      },
+      data: data,
     });
     return result;
   },

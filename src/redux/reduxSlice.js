@@ -21,7 +21,7 @@ const initialState = {
   danhSachPhim: [],
 };
 
-console.log(initialState.danhSachPhim);
+// console.log(initialState.danhSachPhim);
 //khởi tạo reduxSlice, export default reduxSlice ở cuối trang, để qua file configStore xài,
 const reduxSlice = createSlice({
   name: "nguoiDung",
