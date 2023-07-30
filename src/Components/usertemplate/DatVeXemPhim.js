@@ -5,33 +5,28 @@ import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 import "./datvexemphim.scss";
 import MyFooter from "./MyFooter";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   set_loading_ended,
-//   set_loading_started,
-// } from "../../redux/loadingSlice";
 import PageLoading from "./PageLoading";
+import { message } from "antd";
 
 const DatVeXemPhim = () => {
-  const [danhSachPhongVe, setdanhSachPhongVe] = useState({});
+  const [danhSachPhongVe, setdanhSachPhongVe] = useState({}); // lay data tu API
+  const [isLoading, setIsLoading] = useState(true);
+  const [datVe, setDatVe] = useState(false);
+  // state do nguoi dung click , danh sash ghe --> render ra da chon
+
   const maLichChieu = useParams().id;
   // console.log(maLichChieu);
 
   // const dispatch = useDispatch();
   // const { isLoading } = useSelector((state) => state.loading);
-  const [isLoading, setIsLoading] = useState(true);
   const duLieu = useSelector((state) => state.duLieu);
   const isLogin = duLieu.isLogin;
   const navigate = useNavigate();
   useEffect(() => {
-    //kiểm tra xem có đăng nhập chưa
-
-    // dispatch(set_loading_started());
     giaoTiepAPI
       .layDanhSachPhongVe(maLichChieu)
       .then((result) => {
         setdanhSachPhongVe(result.data.content);
-        // dispatch(set_loading_ended());
-        // dispatch(set_loading_started());
         setIsLoading(false);
       })
       .catch((error) => {
@@ -40,7 +35,10 @@ const DatVeXemPhim = () => {
         console.log(error);
       });
   }, [maLichChieu]);
+
   const { danhSachGhe, thongTinPhim } = danhSachPhongVe;
+
+  // console.log(danhSachGhe);
   //chọn ghế
   const handleChonGhe = (index) => {
     setdanhSachPhongVe((danhSachPhongVe) => {
@@ -50,14 +48,51 @@ const DatVeXemPhim = () => {
       return updateDanhSachPhongVe;
     });
   };
+
   //danh sách ghế đã chon
-  const danhSachGheDaChon = danhSachGhe?.filter((item) => item.daChon === true);
+  const danhSachVe = danhSachGhe?.filter((item) => item.daChon === true);
   let tongTien = 0;
   danhSachGhe?.forEach((item) => {
     if (item.daChon === true) {
       return (tongTien += item.giaVe);
     }
   });
+  //thông tin đạt vé
+  const thongTinDatVe = {
+    maLichChieu,
+    danhSachVe,
+  };
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleDatVe = (thongTinDatVe) => {
+    if (danhSachVe.length > 0) {
+      giaoTiepAPI
+        .datVe(thongTinDatVe)
+        .then((result) => {
+          setDatVe(true);
+        })
+        .catch((error) => {
+          console.log(error);
+          messageApi.error("Đặt vé thất bại");
+        });
+      // console.log(result);
+      // setIsLoading(true);
+
+      giaoTiepAPI
+        .layDanhSachPhongVe(maLichChieu)
+        .then((result) => {
+          setdanhSachPhongVe(result.data.content);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.log(error);
+        });
+      messageApi.success("Đặt vé thành công");
+    } else {
+      messageApi.error("Bạn chưa chọn ghé");
+    }
+  };
 
   if (!isLogin) {
     navigate("/dangnhap");
@@ -67,6 +102,8 @@ const DatVeXemPhim = () => {
         <div>{isLoading ? <PageLoading /> : <></>}</div>
         <MyHeader />
         <div id="datVe">
+          {contextHolder}
+
           <div className="datVeContent">
             {/* <div className="manHinh">Màn hình</div> */}
 
@@ -137,7 +174,7 @@ const DatVeXemPhim = () => {
 
             <div>
               <div className="listGhe">
-                {danhSachGheDaChon?.map((item, index) => {
+                {danhSachVe?.map((item, index) => {
                   return <span key={index}>Ghế {item.tenGhe}</span>;
                 })}
               </div>
@@ -150,7 +187,11 @@ const DatVeXemPhim = () => {
               </h1>
             </div>
 
-            <button type="button">Đặt vé</button>
+            <button type="button" onClick={() => handleDatVe(thongTinDatVe)}>
+              Đặt vé
+            </button>
+
+            {/* <p className="thongBao">{datVe ? "Đặt vé thành công" : ""}</p> */}
           </div>
         </div>
         <MyFooter />

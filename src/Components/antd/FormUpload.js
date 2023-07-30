@@ -3,6 +3,8 @@ import { Button, DatePicker, Form, Input, Modal, Switch, Upload } from "antd";
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
+import moment from "moment";
+import { wait } from "@testing-library/user-event/dist/utils";
 const normFile = (e) => {
   if (Array.isArray(e)) {
     return e;
@@ -28,18 +30,58 @@ const FormUpload = () => {
     moTa: Yup.string()
       .required("Vui lòng nhập mô tả.")
       .min(20, "Mô tả phải có ít nhất 20 ký tự."),
+    soSao: Yup.string().required("Vui lòng nhập số sao."),
     ngayKhoiChieu: Yup.string().required("Vui lòng chọn ngày khởi chiếu."),
   });
 
-  const onFinish = (values) => {
-    // code thêm phim
-    giaoTiepAPI
-      .themPhimUploadHinh(values)
-      .then((result) => {
-        console.log(result);
+  const onFinish = async (values) => {
+    // console.log(values);
+
+    let formData = new FormData();
+    formData.append("tenPhim", values.tenPhim);
+    formData.append("trailer", values.trailer);
+    formData.append("moTa", values.moTa);
+    formData.append(
+      "ngayKhoiChieu",
+      moment(values.ngayKhoiChieu.$d).format("DD/MM/YYYY")
+    );
+    formData.append("sapChieu", values.sapChieu);
+    formData.append("dangChieu", values.dangChieu);
+    formData.append("hot", values.hot);
+    formData.append("soSao", values.soSao);
+    formData.append("danhGia", 6);
+    formData.append("maNhom", "GP01");
+    formData.append(
+      "File",
+      values.hinhAnh[0].originFileObj.blob,
+      values.hinhAnh[0].name
+    );
+
+    // console.log(values.hinhAnh[0].originFileObj.blob);
+    // console.log(formData.get("File"));
+    // console.log(formData.get("ngayKhoiChieu"));
+    // let blobImg = "";
+    // await fetch(values.hinhAnh[0].thumbUrl)
+    //   .then(function (response) {
+    //     return response.blob();
+    //   })
+    //   .then(function (blob) {
+    //     console.log("ASIGN");
+    //     blobImg = new Blob([blob], { type: "image/jpeg" });
+    //     // here the image is a blob
+    //   });
+    // console.log(blobImg);
+    // formData.append("File", blobImg, "");
+    // console.log(formData.get("File"), "FORM");
+    // Append the uploaded image file to the FormData object
+    // if (values.hinhAnh && values.hinhAnh[0]) {
+    await giaoTiepAPI
+      .themPhimUploadHinh(formData)
+      .then((res) => {
+        console.log("thành công");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -59,8 +101,17 @@ const FormUpload = () => {
       file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
     );
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
 
+  //chỉnh sửa handleChange để lấy thông tin file
+  const handleChange = ({ fileList: newFileList }) => {
+    // Convert the file to a Blob
+    const file = newFileList[0]?.originFileObj;
+    if (file) {
+      const fileBlob = new Blob([file]);
+      file.blob = fileBlob;
+    }
+    setFileList(newFileList);
+  };
   return (
     <>
       <Form
@@ -116,6 +167,22 @@ const FormUpload = () => {
               validator: (_, value) =>
                 validationSchema
                   .validateAt("moTa", { moTa: value })
+                  .then(() => Promise.resolve())
+                  .catch((error) => Promise.reject(error.message)),
+            },
+          ]}
+          validateTrigger={["onBlur", "onChange"]} // bắt onBlur và onChange
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Số sao"
+          name="soSao"
+          rules={[
+            {
+              validator: (_, value) =>
+                validationSchema
+                  .validateAt("soSao", { soSao: value })
                   .then(() => Promise.resolve())
                   .catch((error) => Promise.reject(error.message)),
             },

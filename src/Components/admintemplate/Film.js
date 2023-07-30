@@ -57,11 +57,11 @@ const Film = () => {
       tenPhim: "",
       trailer: "",
       moTa: "",
+      soSao: "",
       ngayKhoiChieu: "",
       dangChieu: "",
       sapChieu: "",
       hot: "",
-      soSao: "",
       hinhAnh: "",
     },
     validationSchema: yup.object({

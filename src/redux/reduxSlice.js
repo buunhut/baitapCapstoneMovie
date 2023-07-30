@@ -62,3 +62,17 @@ export const getAllDanhSachPhim = createAsyncThunk(
 
 export const { dangNhap, dangXuat } = reduxSlice.actions; //export để gọi dispatch về cho chức năng đăng nhập và đăng xuất
 export default reduxSlice.reducer;
+
+// giaoTiepAPI
+// .layDanhSachPhongVe(maLichChieu)
+// .then((result) => {
+//   setdanhSachPhongVe(result.data.content);
+//   // dispatch(set_loading_ended());
+//   // dispatch(set_loading_started());
+//   setIsLoading(false);
+// })
+// .catch((error) => {
+//   // dispatch(set_loading_ended());
+//   setIsLoading(false);
+//   console.log(error);
+// });
