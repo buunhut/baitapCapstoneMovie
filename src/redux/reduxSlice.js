@@ -19,6 +19,7 @@ const initialState = {
   user,
   danhSachNguoiDung: [],
   danhSachPhim: [],
+  thongTinPhimCanSua: {},
 };
 
 // console.log(initialState.danhSachPhim);
@@ -35,6 +36,9 @@ const reduxSlice = createSlice({
     dangXuat: (state, action) => {
       state.isLogin = false;
       state.user = null;
+    },
+    chinhSuaPhim: (state, action) => {
+      state.thongTinPhimCanSua = action.payload;
     },
   },
   extraReducers: (builder) => {

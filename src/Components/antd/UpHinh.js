@@ -19,7 +19,7 @@ import { giaoTiepAPI } from "../../redux/giaoTiepAPI";
 import { useDispatch } from "react-redux";
 import { getAllDanhSachPhim } from "../../redux/reduxSlice";
 
-const UpHinh = () => {
+const UpHinh = ({ myEdit }) => {
   const dispatch = useDispatch();
   const [imgSrc, setImgSrc] = useState("");
   const [componentSize, setComponentSize] = useState("default");
@@ -64,30 +64,34 @@ const UpHinh = () => {
       // maNhom: yup.string().required("Vui lòng chọn mã nhóm"),
     }),
     onSubmit: (values) => {
-      //   console.log("value: ", values);
-      let formData = new FormData();
-      //đưa giá trị từ formik vào formData
-      for (let key in values) {
-        if (key !== "hinhAnh") {
-          formData.append(key, values[key]);
-        } else {
-          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+      if (myEdit === false) {
+        //   console.log("value: ", values);
+        let formData = new FormData();
+        //đưa giá trị từ formik vào formData
+        for (let key in values) {
+          if (key !== "hinhAnh") {
+            formData.append(key, values[key]);
+          } else {
+            formData.append("File", values.hinhAnh, values.hinhAnh.name);
+          }
         }
-      }
-      //   console.log(formData.get("File"));
-      //gửi formData cho backend xử lý
-      giaoTiepAPI
-        .themPhimUploadHinh(formData)
-        .then((result) => {
-          //   console.log(result);
+        //   console.log(formData.get("File"));
+        //gửi formData cho backend xử lý
+        giaoTiepAPI
+          .themPhimUploadHinh(formData)
+          .then((result) => {
+            //   console.log(result);
 
-          //gọi dispatch về cho reduxSlice
-          dispatch(getAllDanhSachPhim());
-          formik.resetForm();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            //gọi dispatch về cho reduxSlice
+            dispatch(getAllDanhSachPhim());
+            formik.resetForm();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        //code edit phim
+      }
     },
   });
 
@@ -149,13 +153,6 @@ const UpHinh = () => {
         maxWidth: 400,
       }}
     >
-      {/* <Form.Item label="Form Size" name="size">
-        <Radio.Group>
-          <Radio.Button value="small">Small</Radio.Button>
-          <Radio.Button value="default">Default</Radio.Button>
-          <Radio.Button value="large">Large</Radio.Button>
-        </Radio.Group>
-      </Form.Item> */}
       <Form.Item label="Tên phim">
         <Input
           name="tenPhim"
@@ -198,9 +195,10 @@ const UpHinh = () => {
           <></>
         )}
       </Form.Item>
-      <Form.Item label="Tác vụ">
-        <button type="submit">Thêm phim</button>
-      </Form.Item>
+
+      <button type="submit" className="myButton">
+        {myEdit ? "Cập nhật" : "Thêm phim"}
+      </button>
     </Form>
   );
 };

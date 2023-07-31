@@ -34,22 +34,10 @@ const Film = () => {
       });
   };
   //gáng dữ liệu lại cho input khi click sửa
-  const handleSua = (tenPhim) => {
-    // const phimCanSua = danhSachPhim.find(
-    //   (user) => user.taiKhoan === taiKhoan
-    // );
-    // // Gán giá trị lại cho input
-    // formik.setValues({
-    //   taiKhoan: nguoiDungCanSua.taiKhoan,
-    //   matKhau: nguoiDungCanSua.matKhau,
-    //   hoTen: nguoiDungCanSua.hoTen,
-    //   email: nguoiDungCanSua.email,
-    //   soDt: nguoiDungCanSua.soDT,
-    //   maNhom: nguoiDungCanSua.maNhom, //API gọi lên không có
-    //   maLoaiNguoiDung: nguoiDungCanSua.maLoaiNguoiDung,
-    // });
-    // setMyWidth(400);
-    // setMyEdit(true);
+  const handleSua = (phimCanSua) => {
+    // dispatch(chinhSuaPhim(phimCanSua));
+    setMyWidth(400);
+    setMyEdit(true);
   };
   const [messageApi, contextHolder] = message.useMessage();
   //xử lý form bằng formik
@@ -200,10 +188,7 @@ const Film = () => {
                     </span>{" "}
                   </td>
                   <td>
-                    <button
-                      type="button"
-                      onClick={() => handleSua(item.taiKhoan)}
-                    >
+                    <button type="button" onClick={() => handleSua(item)}>
                       Sửa
                     </button>
                     <Popconfirm
@@ -227,7 +212,7 @@ const Film = () => {
       </div>
       <div id="myForm" style={{ width: myWidth }}>
         <h1>Quản lý phim</h1>
-        <UpHinh />
+        <UpHinh myEdit={myEdit} />
         <button
           className="myClose"
           type="button"

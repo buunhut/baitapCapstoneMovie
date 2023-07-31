@@ -4,6 +4,8 @@ import { myLocalStore } from "./myLocalStore";
 const TokenCybersoft =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBTw6FuZyAwNyIsIkhldEhhblN0cmluZyI6IjE5LzEyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTcwMjk0NDAwMDAwMCIsIm5iZiI6MTY3OTg1MDAwMCwiZXhwIjoxNzAzMDkxNjAwfQ.28D2Nfp6Hy4C5u8pvZDIxH2pzlYoKIqgfsJLI_Dque4";
 const Authorization =
+  "Bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
+const Authorization_Xoa =
   "bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
 
 // console.log(Authorization);
@@ -166,7 +168,7 @@ export const giaoTiepAPI = {
       url: `https://movienew.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
       headers: {
         TokenCybersoft,
-        Authorization,
+        Authorization: Authorization_Xoa,
       },
     });
     return result;
@@ -177,7 +179,7 @@ export const giaoTiepAPI = {
       url: "https://movienew.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
       headers: {
         TokenCybersoft,
-        Authorization,
+        Authorization: Authorization_Xoa,
         "Content-Type": "multipart/form-data",
       },
       data: formData,
