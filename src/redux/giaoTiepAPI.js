@@ -4,7 +4,7 @@ import { myLocalStore } from "./myLocalStore";
 const TokenCybersoft =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBTw6FuZyAwNyIsIkhldEhhblN0cmluZyI6IjE5LzEyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTcwMjk0NDAwMDAwMCIsIm5iZiI6MTY3OTg1MDAwMCwiZXhwIjoxNzAzMDkxNjAwfQ.28D2Nfp6Hy4C5u8pvZDIxH2pzlYoKIqgfsJLI_Dque4";
 const Authorization =
-  "Bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
+  "bearer " + myLocalStore.goiLocalStore("user")?.accessToken;
 
 // console.log(Authorization);
 
@@ -171,7 +171,7 @@ export const giaoTiepAPI = {
     });
     return result;
   },
-  themPhimUploadHinh: (data) => {
+  themPhimUploadHinh: (formData) => {
     const result = axios({
       method: "post",
       url: "https://movienew.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
@@ -180,7 +180,7 @@ export const giaoTiepAPI = {
         Authorization,
         "Content-Type": "multipart/form-data",
       },
-      data: data,
+      data: formData,
     });
     return result;
   },

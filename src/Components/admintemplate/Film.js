@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { Button, Popconfirm, message } from "antd";
 import moment from "moment";
 import FormUpload from "../antd/FormUpload";
+import UpHinh from "../antd/UpHinh";
 
 const Film = () => {
   const dispatch = useDispatch();
@@ -223,165 +224,10 @@ const Film = () => {
             })}
           </tbody>
         </table>
-        {/* <Table
-        columns={columns}
-        dataSource={danhSachNguoiDung.length > 0 && newDanhSachNguoiDung}
-        rowKey="id"
-      /> */}
       </div>
       <div id="myForm" style={{ width: myWidth }}>
         <h1>Quản lý phim</h1>
-        {/* <form onSubmit={handleSubmit}>
-          <div className="formItem">
-            <input
-              id="tenPhim"
-              name="tenPhim"
-              value={values.tenPhim}
-              type="text"
-              placeholder="Tên phim"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={myEdit}
-            />
-          </div>
-          {formik.errors.tenPhim && formik.touched.tenPhim ? (
-            <p>{formik.errors.tenPhim}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="trailer"
-              name="trailer"
-              value={values.trailer}
-              placeholder="Trailer"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.trailer && formik.touched.trailer ? (
-            <p>{formik.errors.trailer}</p>
-          ) : (
-            <p></p>
-          )}{" "}
-          <div className="formItem">
-            <input
-              id="moTa"
-              name="moTa"
-              value={values.moTa}
-              type="text"
-              placeholder="Mô tả"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.moTa && formik.touched.moTa ? (
-            <p>{formik.errors.moTa}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="ngayKhoiChieu"
-              name="ngayKhoiChieu"
-              value={values.ngayKhoiChieu}
-              type="date"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.ngayKhoiChieu && formik.touched.ngayKhoiChieu ? (
-            <p>{formik.errors.ngayKhoiChieu}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="dangChieu"
-              name="dangChieu"
-              value={values.soDt}
-              type="text"
-              placeholder="Đang chiếu"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.dangChieu && formik.touched.dangChieu ? (
-            <p>{formik.errors.dangChieu}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="sapChieu"
-              name="sapChieu"
-              value={values.sapChieu}
-              type="text"
-              placeholder="Sắp chiếu"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.sapChieu && formik.touched.sapChieu ? (
-            <p>{formik.errors.sapChieu}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="hot"
-              name="hot"
-              value={values.hot}
-              type="text"
-              placeholder="Hot"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.hot && formik.touched.hot ? (
-            <p>{formik.errors.hot}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem">
-            <input
-              id="soSao"
-              name="soSao"
-              value={values.soSao}
-              type="text"
-              placeholder="Số sao"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.soSao && formik.touched.soSao ? (
-            <p>{formik.errors.soSao}</p>
-          ) : (
-            <p></p>
-          )}
-          <div className="formItem hinhAnh">
-            <input
-              id="hinhAnh"
-              name="hinhAnh"
-              value={values.hinhAnh}
-              type="file"
-              placeholder="Hình Ảnh"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          {formik.errors.soSao && formik.touched.soSao ? (
-            <p>{formik.errors.soSao}</p>
-          ) : (
-            <p></p>
-          )}
-          <div>
-            <button type="submit" className="them">
-              {myEdit ? "Cập nhật" : "Thêm phim"}
-            </button>
-          </div>
-        </form> */}
-        <FormUpload />
+        <UpHinh />
         <button
           className="myClose"
           type="button"

@@ -35,7 +35,7 @@ const FormUpload = () => {
   });
 
   const onFinish = async (values) => {
-    // console.log(values);
+    console.log(values);
 
     let formData = new FormData();
     formData.append("tenPhim", values.tenPhim);
@@ -48,8 +48,8 @@ const FormUpload = () => {
     formData.append("sapChieu", values.sapChieu);
     formData.append("dangChieu", values.dangChieu);
     formData.append("hot", values.hot);
-    formData.append("soSao", values.soSao);
-    formData.append("danhGia", 6);
+    formData.append("soSao", 5);
+    formData.append("danhGia", values.danhGia);
     formData.append("maNhom", "GP01");
     formData.append(
       "File",
@@ -78,7 +78,7 @@ const FormUpload = () => {
     await giaoTiepAPI
       .themPhimUploadHinh(formData)
       .then((res) => {
-        console.log("thành công");
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -205,7 +205,7 @@ const FormUpload = () => {
           ]}
           validateTrigger={["onBlur", "onChange"]} // bắt onBlur và onChange
         >
-          <DatePicker />
+          <DatePicker format={"DD/MM/YYYY"} />
         </Form.Item>
         <Form.Item label="Đăng chiếu" name="dangChieu" valuePropName="checked">
           <Switch />
